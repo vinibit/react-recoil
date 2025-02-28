@@ -2,7 +2,7 @@ import { useSetRecoilState } from "recoil"
 import { IEvento } from "../../interfaces/IEvento"
 import { listaEventosState } from "../atom"
 
-const useAtualizarEvento = () => {
+const useAtualizaEvento = () => {
     const setListaEventos = useSetRecoilState<IEvento[]>(listaEventosState)
     return (evento: IEvento) => {
         setListaEventos(listaAtual => {
@@ -12,4 +12,4 @@ const useAtualizarEvento = () => {
     }
 }
 
-export default useAtualizarEvento
+export default useAtualizaEvento
