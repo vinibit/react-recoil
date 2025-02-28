@@ -21,40 +21,40 @@ const Calendario: React.FC = () => {
 
 	const eventosKalend = new Map<string, IKalendEvento[]>()
 	//const [eventosKalend, setEventosKalend] = useState<Map<string, IKalendEvento[]>>(new Map<string, IKalendEvento[]>());
-	const eventos = useListaEventos()	
+	const eventos = useListaEventos()
 	const atualizarEvento = useAtualizarEvento()
 
 	eventos.forEach(evento => {
 		const chave = evento.inicio.toISOString().slice(0, 10)
 		if (!eventosKalend.has(chave)) {
-		  eventosKalend.set(chave, [])
+			eventosKalend.set(chave, [])
 		}
 		eventosKalend.get(chave)?.push({
-		  id: evento.id,
-		  startAt: evento.inicio.toISOString(),
-		  endAt: evento.fim.toISOString(),
-		  summary: evento.descricao,
-		  color: 'blue'
+			id: evento.id,
+			startAt: evento.inicio.toISOString(),
+			endAt: evento.fim.toISOString(),
+			summary: evento.descricao,
+			color: 'blue'
 		})
-	  })
+	})
 
 	const aoArrastarEvento: OnEventDragFinish = (
 		kalendEventoInalterado: CalendarEvent,
 		kalendEventoAtualizado: CalendarEvent
-	) => {		
+	) => {
 		const evento = eventos.find(evento => evento.descricao === kalendEventoAtualizado.summary)
 		console.log(evento)
 		if (evento) {
 			console.log(evento?.descricao)
-			
+
 			const eventoAlterado = {
 				id: kalendEventoAtualizado.id,
-				descricao: kalendEventoAtualizado.summary,				
+				descricao: kalendEventoAtualizado.summary,
 				inicio: new Date(kalendEventoAtualizado.startAt),
 				fim: new Date(kalendEventoAtualizado.endAt),
 				completo: evento.completo
 			} as IEvento
-			
+
 			console.log(eventoAlterado)
 			atualizarEvento(eventoAlterado)
 		}
