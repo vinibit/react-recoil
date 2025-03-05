@@ -1,5 +1,5 @@
 import { useRecoilValue } from "recoil"
-import eventosFiltradosState from "../selectors"
+import { eventosFiltradosState } from "../../selectors"
 
 const useListaEventos = () => {
     

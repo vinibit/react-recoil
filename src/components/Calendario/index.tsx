@@ -6,8 +6,8 @@ import { IEvento } from '../../interfaces/IEvento'
 import style from './Calendario.module.scss'
 import ptBR from './localizacao/ptBR.json'
 import Kalend, { CalendarEvent, CalendarView, OnEventDragFinish } from 'kalend'
-import useAtualizarEvento from '../../state/hooks/useAtualizaEvento'
-import useListaEventos from '../../state/hooks/useListaEventos'
+import useAtualizarEvento from '../../state/hooks/evento/useAtualizaEvento'
+import useListaEventos from '../../state/hooks/evento/useListaEventos'
 
 interface IKalendEvento {
 	id?: number
@@ -42,11 +42,11 @@ const Calendario: React.FC = () => {
 		kalendEventoInalterado: CalendarEvent,
 		kalendEventoAtualizado: CalendarEvent
 	) => {
+		
 		const evento = eventos.find(evento => evento.descricao === kalendEventoAtualizado.summary)
-		console.log(evento)
+		
 		if (evento) {
-			console.log(evento?.descricao)
-
+			
 			const eventoAlterado = {
 				id: kalendEventoAtualizado.id,
 				descricao: kalendEventoAtualizado.summary,
@@ -54,8 +54,7 @@ const Calendario: React.FC = () => {
 				fim: new Date(kalendEventoAtualizado.endAt),
 				completo: evento.completo
 			} as IEvento
-
-			console.log(eventoAlterado)
+			
 			atualizarEvento(eventoAlterado)
 		}
 	}

@@ -2,7 +2,7 @@ import React from 'react';
 import { IEvento } from '../../interfaces/IEvento'
 import style from './Evento.module.scss';
 import EventoCheckbox from './EventoCheckbox';
-import useExcluiEvento from '../../state/hooks/useExcluiEvento';
+import useExcluiEvento from '../../state/hooks/evento/useExcluiEvento';
 
 const Evento: React.FC<{ 
     evento: IEvento     

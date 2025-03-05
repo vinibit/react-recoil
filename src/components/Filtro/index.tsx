@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import style from './Filtro.module.scss';
 import { useSetRecoilState } from 'recoil';
 import { filtroEventoState } from '../../state/atom';
-import { EstadoEventoEnum, IFiltroEvento } from '../../interfaces/IFiltroEvento';
+import { EstadoEvento, IFiltroEvento } from '../../interfaces/IFiltroEvento';
 
 const Filtro: React.FC = () => {
 
-    const [data, setData] = useState('')
-    const [estado, setEstado] = useState(EstadoEventoEnum.TODOS)
+    const [data, setData] = useState("")
+    const [estado, setEstado] = useState<EstadoEvento>("todos")
     const setFiltroEvento = useSetRecoilState(filtroEventoState)
 
     const submeterForm = (evento: React.FormEvent<HTMLFormElement>) => {
@@ -20,7 +20,7 @@ const Filtro: React.FC = () => {
         setFiltroEvento(filtro)        
     }
 
-    const opcoesEstado = [ EstadoEventoEnum.TODOS, EstadoEventoEnum.COMPLETO, EstadoEventoEnum.INCOMPLETO ]
+    const opcoesEstado = [ "todos", "completo", "incompleto" ] as EstadoEvento[]
 
     return (<form className={style.Filtro} onSubmit={submeterForm}>
         
@@ -44,10 +44,10 @@ const Filtro: React.FC = () => {
                         name="estado"
                         value={opcao}
                         className={style.radio}
-                        onChange={e => setEstado(e.target.value as EstadoEventoEnum)}
-                        checked={opcao === estado as EstadoEventoEnum} />
+                        onChange={e => setEstado(e.target.value as EstadoEvento)}
+                        checked={opcao === estado} />
                     <label htmlFor={opcao} className={style.label}>
-                        {opcao}
+                        {opcao[0].toUpperCase() + opcao.slice(1)}
                     </label>
                 </span>
             ))

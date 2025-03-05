@@ -1,7 +1,7 @@
 import { useSetRecoilState } from "recoil";
-import { IEvento } from "../../interfaces/IEvento";
-import { listaEventosState } from "../atom";
-import { getNewId } from "../../util/modelHelper";
+import { IEvento } from "../../../interfaces/IEvento";
+import { listaEventosState } from "../../atom";
+import { getNewId } from "../../../util/modelHelper";
 
 const useAdicionaEvento = () => {
     

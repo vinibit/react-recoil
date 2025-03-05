@@ -1,6 +1,6 @@
 import { useSetRecoilState } from "recoil"
-import { IEvento } from "../../interfaces/IEvento"
-import { listaEventosState } from "../atom"
+import { IEvento } from "../../../interfaces/IEvento"
+import { listaEventosState } from "../../atom"
 
 const useExcluiEvento = () => {
 

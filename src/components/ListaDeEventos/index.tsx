@@ -2,7 +2,7 @@ import React from 'react'
 import Evento from '../Evento'
 import Filtro from '../Filtro'
 import style from './ListaDeEventos.module.scss'
-import useListaEventos from '../../state/hooks/useListaEventos'
+import useListaEventos from '../../state/hooks/evento/useListaEventos'
 
 const ListaDeEventos: React.FC = () => {
 
