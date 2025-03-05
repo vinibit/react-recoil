@@ -1,0 +1,39 @@
+{
+    "eventos": [
+        {
+            "descricao": "Estudar React",
+            "inicio": "2025-02-24T09:00",
+            "fim": "2025-02-24T13:00",
+            "completo": false,
+            "id": 1642342747
+        },
+        {
+            "descricao": "Estudar Recoil",
+            "inicio": "2025-02-25T09:00",
+            "fim": "2025-02-25T11:00",
+            "completo": false,
+            "id": 1642342959
+        },
+        {
+            "descricao": "Estudar Redux",
+            "inicio": "2025-02-26T09:00",
+            "fim": "2025-02-26T11:00",
+            "completo": false,
+            "id": 1642342971
+        },
+        {
+            "descricao": "Estudar Context API",
+            "inicio": "2025-02-27T09:00",
+            "fim": "2025-02-27T11:00",
+            "completo": false,
+            "id": 1642342983
+        },
+        {
+            "descricao": "Estudar Padrões de Projeto",
+            "inicio": "2025-02-28T09:00",
+            "fim": "2025-02-28T11:00",
+            "completo": false,
+            "id": 1642342995
+        }
+    ]
+}
