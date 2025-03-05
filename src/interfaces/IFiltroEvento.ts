@@ -4,7 +4,9 @@ export enum EstadoEventoEnum {
     INCOMPLETO = "Incompleto",
 }
 
+export type EstadoEvento = "todos" | "completo" | "incompleto"
+
 export interface IFiltroEvento {
     data?: Date | null
-    estado: EstadoEventoEnum 
+    estado: EstadoEvento
 }

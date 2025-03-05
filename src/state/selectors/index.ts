@@ -1,6 +1,6 @@
-import { selector } from "recoil";
-import { filtroEventoState, listaEventosState } from "../atom";
-import { EstadoEventoEnum } from "../../interfaces/IFiltroEvento";
+import { selector } from "recoil"
+import { filtroEventoState, listaEventosState } from "../atom"
+import { IEvento } from "../../interfaces/IEvento"
 
 const extraiData = (dataTempo: Date) => dataTempo.toISOString().slice(0, 10)
     
@@ -8,8 +8,7 @@ const eventosFiltradosState = selector({
     key: 'eventosFiltradosState',
     get: ({ get }) => {
         
-        const filtro = get(filtroEventoState)
-        console.log(filtro)
+        const filtro = get(filtroEventoState)        
         const todosEventos = get(listaEventosState)        
     
         const eventos = todosEventos.filter(evento => {            
@@ -19,11 +18,10 @@ const eventosFiltradosState = selector({
                 || extraiData(filtro.data) === extraiData(evento.inicio) 
 
             // Filtra por estado
-            const filtraEstado = filtro.estado === EstadoEventoEnum.TODOS 
-                || (filtro.estado === EstadoEventoEnum.COMPLETO && evento.completo) 
-                || (filtro.estado === EstadoEventoEnum.INCOMPLETO && !evento.completo)
-            
-            console.log(filtraData, filtraEstado)
+            const filtraEstado = filtro.estado === "todos" 
+                || (filtro.estado === "completo" && evento.completo) 
+                || (filtro.estado === "incompleto" && !evento.completo)
+                        
             return filtraData && filtraEstado
         })
 
@@ -31,4 +29,18 @@ const eventosFiltradosState = selector({
     }
 })
 
-export default eventosFiltradosState
+const eventosAsync = selector({
+    key: 'eventosAsync',
+    get: async () => {
+        
+        const res = await fetch("http://localhost:8080/eventos")
+        const eventos: IEvento[] = await res.json()
+        return eventos.map(evento => ({
+            ...evento,
+            inicio: new Date(evento.inicio),
+            fim: new Date(evento.fim)
+        }))
+    }
+})
+
+export { eventosFiltradosState, eventosAsync }
